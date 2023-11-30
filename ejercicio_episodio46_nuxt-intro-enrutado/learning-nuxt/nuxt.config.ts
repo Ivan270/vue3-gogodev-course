@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	devtools: { enabled: true },
+	nitro: {
+		plugins: ['~/server/index.ts'],
+	},
+	runtimeConfig: {
+		mongodbUri: process.env.MONGODB_URI,
+	},
 	// ssr: true,
 	// nitro: {
 	// 	prerender: {
@@ -8,15 +14,15 @@ export default defineNuxtConfig({
 	// 		routes: ['/services', '/contact', '/about', '/', '/projects'],
 	// 	},
 	// },
-	routeRules: {
-		'/': {
-			prerender: true,
-		},
-		'/about': {
-			ssr: true, // SSR puro
-		},
-		'/services': {
-			ssr: false, // Static page
-		},
-	},
+	// routeRules: {
+	// 	'/': {
+	// 		prerender: true,
+	// 	},
+	// 	'/about': {
+	// 		ssr: true, // SSR puro
+	// 	},
+	// 	'/services': {
+	// 		ssr: false, // Static page
+	// 	},
+	// },
 });
